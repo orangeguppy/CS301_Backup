@@ -1,0 +1,16 @@
+{
+  "name": "hostedloginredirect",
+  "version": "1.0.0",
+  "description": "hostedloginredirect",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jose": "^4.13.1",
+    "mysql2": "^3.2.0"
+  }
+}

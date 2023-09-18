@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+    .btn{
+      text-transform: none;
+    }
+    .status-active{
+      color: green;
+    }
+    .status-inactive{
+      color: red;
+    }
+    .userId{
+      background-color: purple;
+    }
+  }

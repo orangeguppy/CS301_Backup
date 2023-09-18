@@ -1,0 +1,16 @@
+{
+  "name": "lambdaauthorizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jose": "^4.13.1",
+    "jsonwebtoken": "^9.0.0",
+    "util": "^0.12.5"
+  }
+}

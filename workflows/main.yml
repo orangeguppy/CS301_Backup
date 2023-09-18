@@ -1,0 +1,36 @@
+name: Build and Deploy React App to Cloudfront
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    env:
+      BUCKET: itsag1t4.com
+      DIST: build
+      REGION: ap-southeast-1
+      DIST_ID: E1RBXZVIS4IO02
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.REGION }}
+
+    - name: Build React App
+      run: cd frontend && npm install && CI=false npm run build
+ 
+    - name: Deploy app build to S3 bucket
+      run: aws s3 sync ./frontend/build/ s3://itsag1t4.com --delete
+
+    - name: Copy files to production website with the AWS CLI
+      run:
+        aws cloudfront create-invalidation --distribution-id ${{ env.DIST_ID }} --paths "/*"
+
